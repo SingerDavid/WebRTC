@@ -1,12 +1,21 @@
 #!/usr/bin/env node
-
+'use strict';
 /**
  * Module dependencies.
  */
 
+/* this is used to read our key and cert files, code from node js to pull just the values we need from the file*/
+var { readFileSync } = require('fs')
+
 var app = require('../app');
 var debug = require('debug')('project-one:server');
-var http = require('http');
+var https = require('https');
+
+/**
+ * Environment Variables (We added this). Structures assignment
+ */
+
+const { LOCALHOST_SSL_KEY, LOCALHOST_SSL_CERT } = process.env;
 
 /**
  * Get port from environment and store in Express.
@@ -17,9 +26,15 @@ app.set('port', port);
 
 /**
  * Create HTTP server.
+ * https://letsencrypt.org/docs/certificates-for-localhost/ for key and certs generation + add days.
  */
 
-var server = http.createServer(app);
+const config = {
+  key: readFileSync(LOCALHOST_SSL_KEY),
+  cert: readFileSync(LOCALHOST_SSL_CERT),
+};
+
+var server = https.createServer(config, app);
 
 /**
  * Listen on provided port, on all network interfaces.
