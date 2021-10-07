@@ -21,7 +21,15 @@ async function requestUserMedia(constraints) {
 
 /* Socket Server Events and Callbacks*/
 
-const sc = io();
+  /* Only connect to socket once button Join Session is clicked */
+const button = document.querySelector('#connectButton')
+
+const sc = io({ autoConnect: false});
+button.addEventListener('click', function() {
+  sc.open();
+  console.log("Join Session button was clicked, connecting to socket.io server...");
+});
+
 sc.on('connect', function() {
   console.log("Connected to socket.io instance");
 });
