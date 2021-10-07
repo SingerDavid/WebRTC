@@ -49,13 +49,13 @@ function handleScConnect() {
 } //end handleScConnect
 
 function handleScConnectedPeer() {
-  console.log("Heard a peer connect");
+  console.log("peer connected");
 } //end handleScConnectedPeer
 
 function handleScSignal() {
-  console.log("Heard a signaling event");
+  console.log("--signaling event--");
 } // end handleScSignal
 
 async function handleScDisconnectedPeer() {
-  console.log("Heard a peer disconnect");
+  console.log("peer disconnected");
 }//end handleScDisconnectedPeer
