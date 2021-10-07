@@ -15,7 +15,7 @@ async function requestUserMedia(constraints) {
   const video = document.getElementById('self');
   $self.stream = await navigator.mediaDevices.getUserMedia(constraints);
   video.srcObject = $self.stream;
-};
+}
 
 /* Socket Server Events and Callbacks*/
 
