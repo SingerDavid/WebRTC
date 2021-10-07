@@ -5,6 +5,10 @@ const $self = {
   constraints: { audio: false, video: true }
 };
 
+const $peer = {
+  connection: new RTCPeerConnection()
+};
+
 /* automatically makes video play. This sets up a stream between self */
 requestUserMedia($self.constraints);
 
