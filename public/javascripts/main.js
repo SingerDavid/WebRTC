@@ -24,6 +24,8 @@ const namespace = window.location.hash.substr(1);
 
 const sc = io(`/${namespace}`, { autoConnect: false});
 
+/* DOM Events */
+
   /* Only connect to socket once button Join Session is clicked */
 const button = document.querySelector('#connectButton');
 
@@ -32,6 +34,30 @@ button.addEventListener('click', function() {
   console.log("Join Session button was clicked, connecting to socket.io server...");
 });
 
+/* Signaling Channel Events */
+
+function registerScEvents() {
+  sc.on('connect', handleScConnect);
+  sc.on('connected peer', handleScConnectedPeer);
+  sc.on('signal', handleScSignal);
+  sc.on('disconnected peer', handleScDisconnectedPeer);
+}
+
+function handleScConnect() {
+
+}
+
+function handleScConnectedPeer() {
+
+}
+
+function handleScSignal() {
+
+}
+
+async function handleScDisconnectedPeer() {
+
+}
 sc.on('connect', function() {
   console.log("Connected to socket.io instance, waiting on peer connect..");
 });
