@@ -21,10 +21,12 @@ async function requestUserMedia(constraints) {
 
 /* Socket Server Events and Callbacks*/
 
+const namespace = window.location.hash.substr(1);
+
   /* Only connect to socket once button Join Session is clicked */
 const button = document.querySelector('#connectButton')
 
-const sc = io({ autoConnect: false});
+const sc = io('/${namespace}', { autoConnect: false});
 button.addEventListener('click', function() {
   sc.open();
   console.log("Join Session button was clicked, connecting to socket.io server...");
@@ -32,4 +34,8 @@ button.addEventListener('click', function() {
 
 sc.on('connect', function() {
   console.log("Connected to socket.io instance");
+});
+
+sc.on('connected peer', function() {
+  console.log('Hear a peer connect')
 });
