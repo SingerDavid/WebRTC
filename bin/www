@@ -7,7 +7,7 @@
 /* this is used to read our key and cert files, code from node js to pull just the values we need from the file*/
 var { readFileSync } = require('fs')
 
-var app = require('../app');
+var { app, io } = require('../app');
 var debug = require('debug')('project-one:server');
 var https = require('https');
 
