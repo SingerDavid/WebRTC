@@ -41,27 +41,20 @@ function registerScEvents() {
   sc.on('connected peer', handleScConnectedPeer);
   sc.on('signal', handleScSignal);
   sc.on('disconnected peer', handleScDisconnectedPeer);
-}
+} //end registerScEvents
 
 function handleScConnect() {
-
-}
+  console.log("Connected to signaling channel, waiting on peer connect..");
+} //end handleScConnect
 
 function handleScConnectedPeer() {
-
-}
+  console.log("Heard a peer connect");
+} //end handleScConnectedPeer
 
 function handleScSignal() {
-
-}
+  console.log("Heard a signaling event");
+} // end handleScSignal
 
 async function handleScDisconnectedPeer() {
-
-}
-sc.on('connect', function() {
-  console.log("Connected to socket.io instance, waiting on peer connect..");
-});
-
-sc.on('connected peer', function() {
-  console.log('Heard a peer connect')
-});
+  console.log("Heard a peer disconnect");
+}//end handleScDisconnectedPeer
