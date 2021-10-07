@@ -24,6 +24,7 @@ const namespace = window.location.hash.substr(1);
 
 const sc = io(`/${namespace}`, { autoConnect: false});
 
+registerScEvents();
 /* DOM Events */
 
   /* Only connect to socket once button Join Session is clicked */
