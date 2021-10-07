@@ -18,3 +18,10 @@ async function requestUserMedia(constraints) {
     .getUserMedia(constraints);
   video.srcObject = $self.stream;
 }
+
+/* Socket Server Events and Callbacks*/
+
+const sc = io();
+sc.on('connect', function() {
+  console.log("Connected to socket.io instance");
+});

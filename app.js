@@ -18,4 +18,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+io.on('connection', function() {
+  console.log("initialize connection to socket.io server");
+});
+
 module.exports = { app, io };
