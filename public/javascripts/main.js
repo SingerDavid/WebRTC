@@ -1,11 +1,12 @@
 'use strict';
 
 const $self = {
+  rtcConfig: null,
   constraints: { audio: false, video: true }
 };
 
 const $peer = {
-  connection: new RTCPeerConnection()
+  connection: new RTCPeerConnection($self.rtcConfig)
 };
 
 /* automatically makes video play. This sets up a stream between self */
@@ -32,9 +33,9 @@ button.addEventListener('click', function() {
 });
 
 sc.on('connect', function() {
-  console.log("Connected to socket.io instance");
+  console.log("Connected to socket.io instance, waiting on peer connect..");
 });
 
 sc.on('connected peer', function() {
-  console.log('Hear a peer connect')
+  console.log('Heard a peer connect')
 });
