@@ -23,10 +23,11 @@ async function requestUserMedia(constraints) {
 
 const namespace = window.location.hash.substr(1);
 
-  /* Only connect to socket once button Join Session is clicked */
-const button = document.querySelector('#connectButton')
+const sc = io(`/${namespace}`, { autoConnect: false});
 
-const sc = io('/${namespace}', { autoConnect: false});
+  /* Only connect to socket once button Join Session is clicked */
+const button = document.querySelector('#connectButton');
+
 button.addEventListener('click', function() {
   sc.open();
   console.log("Join Session button was clicked, connecting to socket.io server...");
