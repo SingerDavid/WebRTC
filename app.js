@@ -26,4 +26,14 @@ namespaces.on('connection', function(socket) {
   console.log("Ready to connect on namespace, await x2");
 });
 
+/* Listen for signals */
+socket.on('signal', function(signal) {
+  socket.broadcast.emit('signal', signal);
+})
+
+/* Listen for disconnects */
+socket.on('disconnect', function() {
+  namespace.emit('disconnected peer');
+}
+
 module.exports = { app, io };
