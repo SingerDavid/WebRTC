@@ -10,12 +10,20 @@
 
   <body>
     <h1>Hey there handsome!</h1>
-    <video id="self"
-      autoplay
-      muted
-      playsinline>
-    </video>
 
+    <article id="displayVideo">
+
+      <video id="self"
+        autoplay
+        muted
+        playsinline>
+      </video>
+
+    </article>
+
+    <button type="button" id="connectButton">Join Session</button>
+
+    <script src="javascripts/socket.io/socket.io.js"></script>
     <script src="javascripts/main.js"></script>
   </body>
 
