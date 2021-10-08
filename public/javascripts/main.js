@@ -117,7 +117,7 @@ async function handleScSignal({ description, candidate }) {
 
     //referenced from ITMD469 September 15, 2021 lecture. Karl Stolley.
     const readForOffer = !$self.isMakingOffer &&
-    ($peer.connection.signalingState === 'stable') || $self.isSettingRemoteAnswerPending);
+    ($peer.connection.signalingState === 'stable' || $self.isSettingRemoteAnswerPending);
 
     const offerCollision = description.type === 'offer' && !readyForOffer;
 
