@@ -29,7 +29,7 @@ registerScEvents();
 /* Auto-generate namespace hash - Typed with minor adjustments - Code From Karl Stolley Lecture September 15th, 2021. ITMD369*/
 function autoGenerateNamespace(hash, set_location) {
   let ns = hash.replace(/^#/, '');
-  if(/^[0,9]{6}$/.test(ns)){
+  if(/^[0-9]{6}$/.test(ns)) {
     console.log("Test namespace", ns);
     return ns;
   } //end if
