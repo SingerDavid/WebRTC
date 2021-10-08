@@ -127,10 +127,26 @@ async function handleScSignal({ description, candidate }) {
       return;
     }
 
+    $self.isSettingRemoteAnswerPending = description.type === 'answer';
+    await $peer.connection.setRemoteDescription(description);
+    $self.isSettingRemoteAnswerPending = false;
+
+    if (description.type === 'offer') {
+      await $peer.connection.setLocalDescription();
+      sc.emit('signal', { description: $peer.connection.localDescription });
+    } //end if
 
   } else if (candidate) {
     console.log("Recieved ICE candidate:", candidate);
-  }
+    try {
+      await $peer.connection.addIceCandidate(candidate);
+    } //end of try. Used for older borwsers.
+    catch(e) {
+      if (!$self.isIgnoringOffer) {
+        console.error("Cannot add ICE candidate to peer");
+      }
+    } //end of catch
+  } //end of else if candidate
 } // end handleScSignal
 
 function handleScDisconnectedPeer() {
