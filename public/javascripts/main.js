@@ -39,16 +39,16 @@ function autoGenerateNamespace(hash, set_location) {
   return ns;
 }
 
-
 /* DOM Events */
 
-  /* Only connect to socket once button Join Session is clicked */
 const button = document.querySelector('#connectButton');
 
 button.addEventListener('click', JoinSession);
 
 function JoinSession() {
   sc.open();
+  registerRtcEvents($peer);
+  establishCallFeatures($peer);
   //button.innerHTML = "Leave Session";
   console.log("Joined Session, connecting to socket.io server...");
 } //end Join
@@ -58,6 +58,30 @@ function LeaveSession() {
   // button.innerHTML = "Join Session";
   console.log("session left, disconnecting from socket.io server");
 } // end Leave
+
+/* WebRTC Events */
+
+function establishCallFeatures(peer) {
+  peer.connection.addTrack($self.stream.getTracks()[0], $self.stream);
+}
+
+function registerRtcEvents(peer) {
+  peer.connection.onnegotiationneeded = handleRtcNegotiation;
+  peer.connection.onicecandidate = handleIceCandidate;
+  peer.connection.ontrack = handleRtcTrack;
+}
+
+function handleRtcNegotiation() {
+  console.log("RTC negotionation needed...");
+} //end negotionation
+
+function handleIceCandidate() {
+
+} //end candidate
+
+function handleRtcTrack() {
+
+} // end track
 
 /* Signaling Channel Events */
 
