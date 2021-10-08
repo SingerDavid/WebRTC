@@ -35,7 +35,7 @@ function autoGenerateNamespace(hash, set_location) {
   } //end if
   ns = Math.random().toString().substring(2,8);
   console.log("Namespace created", ns);
-  if (set-location) window.location.hash = ns;
+  if (set_location) window.location.hash = ns;
   return ns;
 }
 
