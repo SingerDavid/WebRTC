@@ -20,11 +20,26 @@ async function requestUserMedia(constraints) {
 
 /* Socket Server Events and Callbacks*/
 
-const namespace = window.location.hash.substr(1);
+const namespace = autoGenerateNamespace(window.location.hash, true);
 
 const sc = io(`/${namespace}`, { autoConnect: false});
 
 registerScEvents();
+
+/* Auto-generate namespace hash - Typed with minor adjustments - Code From Karl Stolley Lecture September 15th, 2021. ITMD369*/
+function autoGenerateNamespace(hash, set_location) {
+  let ns = hash.replace(/^#/, '');
+  if(/^[0,9]{6}$/.test(ns)){
+    console.log("Test namespace", ns);
+    return ns;
+  } //end if
+  ns = Math.random().toString().substring(2,8);
+  console.log("Namespace created", ns);
+  if (set-location) window.location.hash = ns;
+  return ns;
+}
+
+
 /* DOM Events */
 
   /* Only connect to socket once button Join Session is clicked */
