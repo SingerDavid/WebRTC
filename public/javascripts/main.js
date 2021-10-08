@@ -114,6 +114,20 @@ async function handleScSignal({ description, candidate }) {
   console.log("--signaling event--");
   if (description) {
     console.log("Recieved SDP Signal:", description);
+
+    //referenced from ITMD469 September 15, 2021 lecture. Karl Stolley.
+    const readForOffer = !$self.isMakingOffer &&
+    ($peer.connection.signalingState === 'stable') || $self.isSettingRemoteAnswerPending);
+
+    const offerCollision = description.type === 'offer' && !readyForOffer;
+
+    $self.isIgnoringOffer = !$self.isPolite  && offerCollision;
+
+    if ($self.isIgnoringOffer) {
+      return;
+    }
+
+
   } else if (candidate) {
     console.log("Recieved ICE candidate:", candidate);
   }
