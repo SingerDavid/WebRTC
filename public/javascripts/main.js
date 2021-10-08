@@ -45,10 +45,19 @@ function autoGenerateNamespace(hash, set_location) {
   /* Only connect to socket once button Join Session is clicked */
 const button = document.querySelector('#connectButton');
 
-button.addEventListener('click', function() {
+button.addEventListener('click', JoinSession);
+
+function JoinSession() {
   sc.open();
-  console.log("Join Session button was clicked, connecting to socket.io server...");
-});
+  //button.innerHTML = "Leave Session";
+  console.log("Joined Session, connecting to socket.io server...");
+} //end Join
+
+function LeaveSession() {
+  sc.close();
+  // button.innerHTML = "Join Session";
+  console.log("session left, disconnecting from socket.io server");
+} // end Leave
 
 /* Signaling Channel Events */
 
