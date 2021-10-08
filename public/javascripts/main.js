@@ -2,6 +2,10 @@
 
 const $self = {
   rtcConfig: null,
+  isPolite: false,
+  isMakingOffer: false,
+  isIgnoringOffer: false,
+  isSettingRemoteAnswerPending: false,
   constraints: { audio: false, video: true }
 };
 
@@ -74,8 +78,12 @@ function registerRtcEvents(peer) {
 async function handleRtcNegotiation() {
   console.log("RTC negotionation needed...");
   // send an SDP description
+  $self.isMakingOffer: true;
+
   await $peer.connection.setLocalDescription();
   sc.emit('signal', { description: $peer.connection.localDescription})
+
+  $self.isMakingOffer: false;
 } //end negotionation
 
 function handleIceCandidate() {
@@ -101,6 +109,7 @@ function handleScConnect() {
 
 function handleScConnectedPeer() {
   console.log("peer connected");
+  $self.isPolite = true;
 } //end handleScConnectedPeer
 
 async function handleScSignal({ description, candidate }) {
