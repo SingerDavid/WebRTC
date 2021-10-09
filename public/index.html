@@ -14,23 +14,23 @@
       <h5>A place for one-on-one tutoring</h5>
     </header>
 
-    <article id="displayVideoSelf">
-      <video id="self"
-        autoplay
-        muted
-        playsinline>
-      </video>
-    </article>
+    <main>
+      <article id="displayVideo">
+        <video id="self"
+          autoplay
+          muted
+          playsinline>
+        </video>
 
-    <article id="displayVideoPeer">
-      <video id="peer"
-        autoplay
-        muted
-        playsinline>
-      </video>
-    </article>
+        <video id="peer"
+          autoplay
+          muted
+          playsinline>
+        </video>
+      </article>
 
-    <button type="button" id="connectButton">Join Session</button>
+      <button type="button" id="connectButton">Join Session</button>
+    </main>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="javascripts/main.js"></script>
