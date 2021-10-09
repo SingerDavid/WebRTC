@@ -2,23 +2,32 @@
 <html lang="en" id="home-screen">
 
   <head>
-    <title>WebRTC</title>
+    <title>Advant Tutoring</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no" />
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/stylesheets/screen.css">
   </head>
 
   <body>
-    <h1>Hey there handsome!</h1>
+    <header>
+      <h1>Welcome to Advant Tutoring</h1>
+      <h5>A place for one-on-one tutoring</h5>
+    </header>
 
-    <article id="displayVideo">
-
+    <article id="displayVideoSelf">
       <video id="self"
         autoplay
         muted
         playsinline>
       </video>
+    </article>
 
+    <article id="displayVideoPeer">
+      <video id="peer"
+        autoplay
+        muted
+        playsinline>
+      </video>
     </article>
 
     <button type="button" id="connectButton">Join Session</button>
