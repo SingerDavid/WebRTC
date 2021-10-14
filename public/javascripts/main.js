@@ -46,6 +46,8 @@ function autoGenerateNamespace(hash, set_location) {
 /* DOM Events */
 
 const button = document.querySelector('#connectButton');
+document.querySelector('#roomID')
+  .innerText = ('Room ID: #' + namespace);
 
 button.addEventListener('click', JoinSession);
 
