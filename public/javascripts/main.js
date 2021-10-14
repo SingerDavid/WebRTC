@@ -60,7 +60,7 @@ function handleButtonClass(e) {
   } else {
     buttonClass.className = 'join';
     buttonClass.innerText = "Join Session";
-    leaveSession();
+    LeaveSession();
   } //end else
 } //end function handleButtonClass
 
