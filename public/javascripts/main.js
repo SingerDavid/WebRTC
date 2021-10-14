@@ -13,13 +13,19 @@ const $peer = {
   connection: new RTCPeerConnection($self.rtcConfig)
 };
 
-/* automatically makes video play. This sets up a stream between self */
+/* Set up a stream by grabbing self and peer*/
 requestUserMedia($self.constraints);
 
 async function requestUserMedia(constraints) {
-  const video = document.getElementById('self');
   $self.stream = await navigator.mediaDevices.getUserMedia(constraints);
-  video.srcObject = $self.stream;
+  displayStream('#self', $self.stream);
+}
+
+/* DOM media events (grab self and peer)*/
+
+function displayStream( selector, stream ) {
+  const video = document.querySelector(selector);
+  video.srcObject = stream;
 }
 
 /* Socket Server Events and Callbacks*/
@@ -103,8 +109,9 @@ function handleIceCandidate({ candidate }) {
   sc.emit('signal', { candidate: candidate });
 } //end candidate
 
-function handleRtcTrack() {
-
+function handleRtcTrack({ track, streams: [stream] }) {
+  //attach incoming track to DOM
+  displayStream('#peer', stream);
 } // end track
 
 /* Signaling Channel Events */
