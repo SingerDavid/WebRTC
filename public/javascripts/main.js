@@ -49,7 +49,20 @@ const button = document.querySelector('#connectButton');
 document.querySelector('#roomID')
   .innerText = ('Room ID: #' + namespace);
 
-button.addEventListener('click', JoinSession);
+button.addEventListener('click', handleButtonClass);
+
+function handleButtonClass(e) {
+  const buttonClass = e.target;
+  if (buttonClass.className === 'join') {
+    buttonClass.className = 'leave';
+    buttonClass.innerText = "Leave Session";
+    JoinSession();
+  } else {
+    buttonClass.className = 'join';
+    buttonClass.innerText = "Join Session";
+    leaveSession();
+  } //end else
+} //end function handleButtonClass
 
 function JoinSession() {
   sc.open();
