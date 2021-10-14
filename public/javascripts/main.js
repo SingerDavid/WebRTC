@@ -79,6 +79,9 @@ function JoinSession() {
 } //end Join
 
 function LeaveSession() {
+  displayStream('#peer', null);
+  $peer.connection.close();
+  $peer.connection = new RTCPeerConnection($self.rtcConfig);
   sc.close();
   // button.innerHTML = "Join Session";
   console.log("session left, disconnecting from socket.io server");
@@ -173,4 +176,7 @@ async function handleScSignal({ description, candidate }) {
 
 function handleScDisconnectedPeer() {
   console.log("peer disconnected");
+  displayStream('#peer', null);
+  $peer.connection.close();
+  $peer.connection = new RTCPeerConnection($self.rtcConfig);
 }//end handleScDisconnectedPeer
