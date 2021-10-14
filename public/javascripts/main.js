@@ -179,4 +179,7 @@ function handleScDisconnectedPeer() {
   displayStream('#peer', null);
   $peer.connection.close();
   $peer.connection = new RTCPeerConnection($self.rtcConfig);
+  //reconfigure - so disconnct can reconnect.
+  registerRtcEvents($peer);
+  establishCallFeatures($peer);
 }//end handleScDisconnectedPeer
