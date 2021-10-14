@@ -31,6 +31,16 @@ h5 {
   text-align: center;
 }
 
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr auto;
+}
+
+h6 {
+  position: absolute;
+}
+
 #displayVideo {
   display: flex;
   flex-direction: row;
