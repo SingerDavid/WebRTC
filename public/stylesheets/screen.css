@@ -75,7 +75,19 @@ video {
   display: flex;
 }
 button {
+  box-sizing: content-box;
+  width: 7em;
+  height: 1.5em;
 }
+
+.join {
+
+}
+
+.leave {
+  background-color: red;
+}
+
 ul {
   list-style-type: none;
 }
