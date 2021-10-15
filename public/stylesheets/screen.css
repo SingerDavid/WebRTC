@@ -88,10 +88,10 @@ button {
   background-color: red;
 }
 
-ul {
+#UlButtonList {
   list-style-type: none;
 }
-li{
+.buttonList{
   display: inline-block;
   background-color: white;
   text-decoration: none;
