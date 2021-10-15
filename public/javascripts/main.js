@@ -139,13 +139,13 @@ function handleRtcTrack({ track, streams: [stream] }) {
 } // end track
 
 function appendMessage(sender, message) {
-    const logs = document.querySelector('#chat-logs');
+    const logs = document.querySelector('#chat-log');
     const li = document.createElement('li');
     li.innerText = message;
     logs.appendChild(li);
 } //end appendMessage
 
-/*
+
 function handleRtcDataChannel({ channel }) {
   const dc = channel;
   console.log("Heard data channel event", dc.label, " with ID:", dc.id);
@@ -156,7 +156,7 @@ function handleRtcDataChannel({ channel }) {
     dc.close();
   };
 }
-*/
+
 
 
 /* Signaling Channel Events */
