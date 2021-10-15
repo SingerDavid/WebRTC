@@ -46,6 +46,7 @@ main {
 h6 {
   grid-column: 3/4;
   grid-row: 1;
+  text-align: center;
 }
 
 #displayVideo {
@@ -65,15 +66,16 @@ h6 {
 
 video {
   margin-block: 1.19047619em; /* line height */
-  max-width: 100%;
 }
 
 #self{
   outline: dashed black;
+  width: 50%;
 }
 
 #peer {
   outline: dashed blue;
+  max-width: 100%;
 }
 
 #chat {
@@ -104,17 +106,4 @@ button {
 
 .leave {
   background-color: red;
-}
-
-#UlButtonList {
-  list-style-type: none;
-}
-.buttonList{
-  display: inline-block;
-  background-color: white;
-  text-decoration: none;
-  text-align: center;
-  padding-block: 0.2em;
-  padding-inline: 0.5em;
-  border-radius: 1em;
 }
