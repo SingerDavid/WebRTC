@@ -73,7 +73,7 @@ function handleButtonClass(e) {
     LeaveSession();
   } //end else
 } //end function handleButtonClass
- 
+
 function JoinSession() {
   sc.open();
   registerRtcEvents($peer);
@@ -141,6 +141,7 @@ function appendMessage(sender, message) {
     const logs = document.querySelector('#chat-log');
     const li = document.createElement('li');
     li.innerText = message;
+    li.className = sender;
     logs.appendChild(li);
 } //end appendMessage
 
@@ -148,15 +149,7 @@ function appendMessage(sender, message) {
 function handleRtcDataChannel({ channel }) {
   const dc = channel;
   console.log("Heard data channel event", dc.label, " with ID:", dc.id);
-  $peer.testChannel = channel;
-  console.log("Label:", $peer.testChannel.label);
-  document.querySelector('#peer').className = dc.label;
-  dc.onopen = function() {
-    dc.close();
-  };
 }
-
-
 
 /* Signaling Channel Events */
 
