@@ -25,18 +25,17 @@
 
         <video id="peer"
           autoplay
-          muted
           playsinline>
         </video>
       </article>
 
       <article id="chat">
+        <h3 id="chat-title">Chat box:</h3>
         <ol id="chat-log">
 
         </ol>
         <form id="chat-form" action="#null" method="get">
-          <label id="chat-label" for="chat-input">Type a message:</label>
-          <input id="chat-input" type="text" autocomplete="off"/>
+          <input id="chat-input" type="text" autocomplete="off" placeholder="Type your message:"/>
           <button id="chat-button" type="submit">Send</button>
         </form>
 
