@@ -107,7 +107,7 @@ function handleChatForm(e) {
 function establishCallFeatures(peer) {
   peer.connection.addTrack($self.stream.getTracks()[0], $self.stream);
   const peerChat = peer.chatChannel;
-  peerChat = peer.connection.createDataChannel('chat', { negotiation: true, id: 20});
+  peerChat = peer.connection.createDataChannel('chat', { negotiated: true, id: 20});
   peerChat = function ({ data }) {
     appendMessage('peer', data);
   };
