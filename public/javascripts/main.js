@@ -119,9 +119,14 @@ function handleRtcTrack({ track, streams: [stream] }) {
 } // end track
 
 function handleRtcDataChannel({ channel }) {
-  console.log("Heard data channel event", channel);
+  const dc = channel;
+  console.log("Heard data channel event", dc.label, " with ID:", dc.id);
   $peer.testChannel = channel;
   console.log("Label:", $peer.testChannel.label);
+  document.querySelector('#peer').className = dc.label;
+  dc.onopen = function() {
+    dc.close();
+  };
 }
 
 
