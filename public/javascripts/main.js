@@ -73,7 +73,7 @@ function handleButtonClass(e) {
     LeaveSession();
   } //end else
 } //end function handleButtonClass
-
+ 
 function JoinSession() {
   sc.open();
   registerRtcEvents($peer);
