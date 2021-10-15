@@ -57,6 +57,10 @@ document.querySelector('#roomID')
 
 button.addEventListener('click', handleButtonClass);
 
+const chatform = document.querySelector('#chat-form');
+
+chatform.addEventListener('submit', handleChatForm)
+
 function handleButtonClass(e) {
   const buttonClass = e.target;
   if (buttonClass.className === 'join') {
@@ -87,10 +91,26 @@ function LeaveSession() {
   console.log("session left, disconnecting from socket.io server");
 } // end Leave
 
+function handleChatForm(e) {
+  //Like a reset-css but telling the browser to not do what it normaly does.
+  e.preventDefault();
+  const input = document.querySelector('#chat-input');
+  const message = input.value;
+  input.value = '';
+  appendMessage('self', message);
+  $peer.chatChannel.send(message);
+}
+
+
 /* WebRTC Events */
 
 function establishCallFeatures(peer) {
   peer.connection.addTrack($self.stream.getTracks()[0], $self.stream);
+  const peerChat = peer.chatChannel;
+  peerChat = peer.connection.createDataChannel('chat', { negotiation: true, id: 20});
+  peerChat = function ({ data }) {
+    appendMessage('peer', data);
+  };
 }
 
 function registerRtcEvents(peer) {
@@ -118,6 +138,14 @@ function handleRtcTrack({ track, streams: [stream] }) {
   displayStream('#peer', stream);
 } // end track
 
+function appendMessage(sender, message) {
+    const logs = document.querySelector('#chat-logs');
+    const li = document.createElement('li');
+    li.innerText = message;
+    logs.appendChild(li);
+} //end appendMessage
+
+/*
 function handleRtcDataChannel({ channel }) {
   const dc = channel;
   console.log("Heard data channel event", dc.label, " with ID:", dc.id);
@@ -128,6 +156,7 @@ function handleRtcDataChannel({ channel }) {
     dc.close();
   };
 }
+*/
 
 
 /* Signaling Channel Events */
