@@ -56,6 +56,13 @@ h6 {
   justify-content: center;
 }
 
+.self {
+  background-color: #1982FC;
+}
+.peer{
+  background-color: #43CC47;
+}
+
 video {
   margin-block: 1.19047619em; /* line height */
   max-width: 100%;
