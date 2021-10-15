@@ -6,7 +6,7 @@ const $self = {
   isMakingOffer: false,
   isIgnoringOffer: false,
   isSettingRemoteAnswerPending: false,
-  constraints: { audio: false, video: true }
+  constraints: { audio: true, video: true }
 };
 
 const $peer = {
@@ -105,7 +105,11 @@ function handleChatForm(e) {
 /* WebRTC Events */
 
 function establishCallFeatures(peer) {
-  peer.connection.addTrack($self.stream.getTracks()[0], $self.stream);
+  const fullTrack = $self.stream.getTracks();
+  for ( let tracks of fullTrack ) {
+    peer.connection.addTrack(tracks, $self.stream);
+  }
+  
   peer.chatChannel = peer.connection.createDataChannel('chat', { negotiated: true, id: 20});
   peer.chatChannel.onmessage = function ({ data }) {
     appendMessage('peer', data);
