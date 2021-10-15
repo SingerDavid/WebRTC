@@ -30,11 +30,23 @@
         </video>
       </article>
 
+      <article id="chat">
+        <ol id="chat-log">
+
+        </ol>
+        <form id="chat-form" action="#null" method="get">
+          <label id="chat-label" for="chat-input">Type a message:</label>
+          <input id="chat-input" type="text" autocomplete="off"/>
+          <button id="chat-button" type="submit">Send</button>
+        </form>
+
+      </article>
+
       <article id="UserButtons">
         <button type="button" id="connectButton" class="join">Join Session</button>
-        <ul>
-          <li>Video off</li>
-          <li>Mute</li>
+        <ul id="UlButtonList">
+          <li class="buttonList">Video off</li>
+          <li class="buttonList">Mute</li>
         </ul>
 
       </article>
